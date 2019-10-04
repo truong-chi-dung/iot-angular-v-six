@@ -12,7 +12,8 @@ import { takeWhile } from 'rxjs/operators';
 })
 export class DevicesCardComponent implements OnInit {
 
-  devices: Device[];
+  public devices: Device[];
+  
   private alive = true;
   private timeRefreshSubscription: Subscription;
   private speedVal: number = 5000;

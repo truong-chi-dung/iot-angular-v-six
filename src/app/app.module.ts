@@ -7,6 +7,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { DetailModule } from './detail/detail.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -14,12 +16,14 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     NgbModule,
+    RouterModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
-    DashboardModule
+    DashboardModule,
+    DetailModule
     
   ],
   providers: [],
