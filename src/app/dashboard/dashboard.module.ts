@@ -11,7 +11,7 @@ import { DevicesCardComponent } from './devices-card/devices-card.component';
     DevicesCardComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ]
 })
 export class DashboardModule { }
