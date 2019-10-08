@@ -8,7 +8,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 })
 export class PartcountService {
 
-  constructor(private http: HttpClient) { }  
+  constructor(private http: HttpClient) { }
 
   getPartCountUrl = 'http://localhost:8080/streams/partcount/period/';
 
@@ -17,7 +17,8 @@ export class PartcountService {
   }
 
   getPartCountByDeviceIdAndPeriod(id: string, shift: string, startTime: string, endTime: string): Observable<PartCount[]> {
-    return this.http.get<PartCount[]>(this.getPartCountUrl + id + '?startTime=' + startTime + '&endTime=' + endTime + '&shift=' + shift  );
+    console.log(this.getPartCountUrl + id + '?startTime=' + startTime + '&endTime=' + endTime + '&shift=' + shift);
+    return this.http.get<PartCount[]>(this.getPartCountUrl + id + '?startTime=' + startTime + '&endTime=' + endTime + '&shift=' + shift);
   }
 
 }

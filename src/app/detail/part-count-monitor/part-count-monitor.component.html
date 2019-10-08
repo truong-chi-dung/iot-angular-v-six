@@ -1,9 +1,9 @@
 <div class="row mt-3">
     <div class="col">
-        <form class="form-inline">
+        <form class="form-inline ml-3">
             <div class="form-group">
                 <div class="input-group">
-                    <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="date" ngbDatepicker
                         #d="ngbDatepicker">
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
@@ -11,6 +11,25 @@
                 </div>
             </div>
         </form>
+    </div>
+    <div class="col">
+        <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="shift">
+            <label ngbButtonLabel class="btn-secondary">
+                <input ngbButton type="radio" [value]="0"> All
+            </label>
+            <label ngbButtonLabel class="btn-secondary">
+                <input ngbButton type="radio" [value]="1"> 1st shift
+            </label>
+            <label ngbButtonLabel class="btn-secondary">
+                <input ngbButton type="radio" [value]="2"> 2nd shift
+            </label>
+            <label ngbButtonLabel class="btn-secondary">
+                <input ngbButton type="radio" [value]="3"> 3rd shift
+            </label>
+        </div>
+    </div>
+    <div class="col">
+        <button type="button" class="btn btn-primary" (click)="updateData()">Change</button>
     </div>
 </div>
 <div class="row">
