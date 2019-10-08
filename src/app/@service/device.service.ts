@@ -20,11 +20,14 @@ export class DeviceService {
     return this.http.get<Device>(this.getDevicesUrl + id);
   }
 
-  deleteDevice() {
-    this.http.get(this.getDevicesUrl + 'delete');
+  deleteDevices(): Observable<Device[]> {    
+    console.log(this.getDevicesUrl + 'delete');
+    return this.http.get<Device[]>(this.getDevicesUrl + 'delete');
   }
 
-  createDevice(): Observable<Device[]> {
+  createDevices(): Observable<Device[]> {
+    console.log(this.getDevicesUrl + 'create');
     return this.http.get<Device[]>(this.getDevicesUrl + 'create');
   }
+
 }
