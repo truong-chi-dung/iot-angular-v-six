@@ -15,16 +15,15 @@ import { RouterModule } from '@angular/router';
     AppComponent
   ],
   imports: [
-    NgbModule,
     RouterModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
+    NgbModule,
     DashboardModule,
     DetailModule
-    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { PartCount } from '../@model/partcount';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PartcountService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }  
 
   getPartCountUrl = 'http://localhost:8080/streams/partcount/period/';
 

@@ -3,4 +3,5 @@ export class PartCount {
     deviceId: string;
     partCount: string;
     timeStamp: string;
+    shift: string;
 }

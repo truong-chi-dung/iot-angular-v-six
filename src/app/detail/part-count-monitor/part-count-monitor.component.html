@@ -1,1 +1,20 @@
-<p>part-count-monitor works!</p>
+<div class="row mt-3">
+    <div class="col">
+        <form class="form-inline">
+            <div class="form-group">
+                <div class="input-group">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker
+                        #d="ngbDatepicker">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table>
+    </div>
+</div>
