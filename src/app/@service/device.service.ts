@@ -19,4 +19,12 @@ export class DeviceService {
   getDevice(id: string): Observable<Device> {
     return this.http.get<Device>(this.getDevicesUrl + id);
   }
+
+  deleteDevice() {
+    this.http.get(this.getDevicesUrl + 'delete');
+  }
+
+  createDevice(): Observable<Device[]> {
+    return this.http.get<Device[]>(this.getDevicesUrl + 'create');
+  }
 }
