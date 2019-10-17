@@ -15,11 +15,21 @@ export class UpdateDeviceComponent implements OnInit {
   ngOnInit() {
   }
 
-  createDevices() {
-    this.deviceService.createDevices().subscribe();
+  // createDevices() {
+  //   this.deviceService.createDevices().subscribe();
+  // }
+
+  // deleteDevices() {
+  //   this.deviceService.deleteDevices().subscribe();
+  // }
+
+  updateDevices() {
+    this.deviceService.deleteDevice().then(
+      () => this.deviceService.createDevices().subscribe()
+    );
   }
 
-  deleteDevices() {
-    this.deviceService.deleteDevices().subscribe();
+  exportCsv() {    
+    this.deviceService.exportCsv();
   }
 }

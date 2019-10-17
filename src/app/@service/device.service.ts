@@ -22,14 +22,29 @@ export class DeviceService {
     return this.http.get<Device>(this.getDevicesUrl + id);
   }
 
-  deleteDevices(): Observable<Device[]> {    
+  // deleteDevices(): Observable<Device[]> {
+  //   console.log(this.getDevicesUrl + 'delete');
+  //   return this.http.get<Device[]>(this.getDevicesUrl + 'delete');
+  // }
+
+  // createDevices(): Observable<Device[]> {
+  //   console.log(this.getDevicesUrl + 'create');
+  //   return this.http.get<Device[]>(this.getDevicesUrl + 'create');
+  // }
+
+  async deleteDevice() {
     console.log(this.getDevicesUrl + 'delete');
-    return this.http.get<Device[]>(this.getDevicesUrl + 'delete');
+    return this.http.get<Device[]>(this.getDevicesUrl + 'delete').toPromise();
   }
 
   createDevices(): Observable<Device[]> {
     console.log(this.getDevicesUrl + 'create');
     return this.http.get<Device[]>(this.getDevicesUrl + 'create');
+  }
+
+  exportCsv(): void {
+    console.log(this.getDevicesUrl + 'csv');
+    window.open(this.getDevicesUrl + 'csv',"_blank");
   }
 
 }
