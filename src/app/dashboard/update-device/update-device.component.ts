@@ -8,6 +8,9 @@ import { DeviceService } from 'src/app/@service/device.service';
 })
 export class UpdateDeviceComponent implements OnInit {
 
+  // private ip = window.location.hostname;
+  private ip = window.location.origin; // .origin this will give you the ip:port, .hostname for ip
+  
   constructor(
     private deviceService: DeviceService
   ) { }
@@ -24,12 +27,13 @@ export class UpdateDeviceComponent implements OnInit {
   // }
 
   updateDevices() {
-    this.deviceService.deleteDevice().then(
-      () => this.deviceService.createDevices().subscribe()
+    console.log(this.ip);
+    this.deviceService.deleteDevice(this.ip).then(
+      () => this.deviceService.createDevices(this.ip).subscribe()
     );
   }
 
   exportCsv() {    
-    this.deviceService.exportCsv();
+    this.deviceService.exportCsv(this.ip);
   }
 }

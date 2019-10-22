@@ -12,14 +12,18 @@ export class DeviceService {
   constructor(private http: HttpClient) { }
 
   // getDevicesUrl = 'http://localhost:8080/devices/';
-  getDevicesUrl = HostAddress.API_ENDPOINT + 'devices/';
+  // getDevicesUrl = HostAddress.API_ENDPOINT + 'devices/';
+  getDevicesUrl = '/api/devices/';
+  // getDevicesUrl = ':8080/api/devices/';
 
-  getDevices(): Observable<Device[]> {
-    return this.http.get<Device[]>(this.getDevicesUrl);
+  getDevices(ipPort: string): Observable<Device[]> {
+    // return this.http.get<Device[]>(this.getDevicesUrl);
+    return this.http.get<Device[]>(ipPort + this.getDevicesUrl);
   }
 
-  getDevice(id: string): Observable<Device> {
-    return this.http.get<Device>(this.getDevicesUrl + id);
+  getDevice(ipPort: string, id: string): Observable<Device> {
+    // return this.http.get<Device>(this.getDevicesUrl + id);
+    return this.http.get<Device>(ipPort + this.getDevicesUrl + id);
   }
 
   // deleteDevices(): Observable<Device[]> {
@@ -32,19 +36,19 @@ export class DeviceService {
   //   return this.http.get<Device[]>(this.getDevicesUrl + 'create');
   // }
 
-  async deleteDevice() {
-    console.log(this.getDevicesUrl + 'delete');
-    return this.http.get<Device[]>(this.getDevicesUrl + 'delete').toPromise();
+  async deleteDevice(ipPort: string) {
+    console.log(ipPort + this.getDevicesUrl + 'delete');
+    return this.http.get<Device[]>(ipPort + this.getDevicesUrl + 'delete').toPromise();
   }
 
-  createDevices(): Observable<Device[]> {
-    console.log(this.getDevicesUrl + 'create');
-    return this.http.get<Device[]>(this.getDevicesUrl + 'create');
+  createDevices(ipPort: string): Observable<Device[]> {
+    console.log(ipPort + this.getDevicesUrl + 'create');
+    return this.http.get<Device[]>(ipPort + this.getDevicesUrl + 'create');
   }
 
-  exportCsv(): void {
-    console.log(this.getDevicesUrl + 'csv');
-    window.open(this.getDevicesUrl + 'csv',"_blank");
+  exportCsv(ipPort: string): void {
+    console.log(ipPort + this.getDevicesUrl + 'csv');
+    window.open(ipPort + this.getDevicesUrl + 'csv',"_blank");
   }
 
 }

@@ -9,11 +9,15 @@ import { PartCount } from 'src/app/@model/partcount';
   styleUrls: ['./part-count-monitor.component.css']
 })
 export class PartCountMonitorComponent implements OnInit {
+  
   currentDate = new Date();
   public shift: string = "0";
   public date = { year: this.currentDate.getFullYear(), month: this.currentDate.getMonth() + 1, day: this.currentDate.getDate() };
   public data: PartCount[];
-
+  
+  // private ip = window.location.hostname;
+  private ip = window.location.origin; // .origin this will give you the ip:port, hostname for ip
+  
   settings = {
     actions: false,
     columns: {
@@ -36,7 +40,7 @@ export class PartCountMonitorComponent implements OnInit {
 
   ngOnInit() {
     if (this.route.snapshot.params.startTime != null && this.route.snapshot.params.endTime != null) {
-      this.partcountService.getPartCountByDeviceIdAndPeriod(this.route.snapshot.params.id, this.route.snapshot.params.shift, this.route.snapshot.params.startTime, this.route.snapshot.params.endTime)
+      this.partcountService.getPartCountByDeviceIdAndPeriod(this.ip, this.route.snapshot.params.id, this.route.snapshot.params.shift, this.route.snapshot.params.startTime, this.route.snapshot.params.endTime)
         .subscribe(
           partCountByDeviceId => {
             this.data = partCountByDeviceId;
@@ -47,7 +51,7 @@ export class PartCountMonitorComponent implements OnInit {
         );
     } else {
       console.log(this.route.snapshot.params.id);
-      this.partcountService.getPartCountByDeviceId(this.route.snapshot.params.id)
+      this.partcountService.getPartCountByDeviceId(this.ip, this.route.snapshot.params.id)
         .subscribe(
           partCountByDeviceId => {
             this.data = partCountByDeviceId;
@@ -65,7 +69,7 @@ export class PartCountMonitorComponent implements OnInit {
       let startTime = this.date.year + "-" + this.date.month + "-" + this.date.day;
       let endTime = this.date.year + "-" + this.date.month + "-" + (this.date.day + 1).toString();
 
-      this.partcountService.getPartCountByDeviceIdAndPeriod(this.route.snapshot.params.id, this.shift, startTime, endTime)
+      this.partcountService.getPartCountByDeviceIdAndPeriod(this.ip, this.route.snapshot.params.id, this.shift, startTime, endTime)
         .subscribe(
           partCountByDeviceId => {
             this.data = partCountByDeviceId;
@@ -78,7 +82,7 @@ export class PartCountMonitorComponent implements OnInit {
       let startTime = this.date.year + "-" + this.date.month + "-" + this.date.day;
       let endTime = this.date.year + "-" + this.date.month + "-" + this.date.day;
 
-      this.partcountService.getPartCountByDeviceIdAndPeriod(this.route.snapshot.params.id, this.shift, startTime, endTime)
+      this.partcountService.getPartCountByDeviceIdAndPeriod(this.ip, this.route.snapshot.params.id, this.shift, startTime, endTime)
         .subscribe(
           partCountByDeviceId => {
             this.data = partCountByDeviceId;

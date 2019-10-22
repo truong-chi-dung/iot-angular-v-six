@@ -18,13 +18,16 @@ export class DevicesCardComponent implements OnInit {
   private timeRefreshSubscription: Subscription;
   private speedVal: number = 5000;
 
+  // private ip = window.location.hostname;
+  private ip = window.location.origin; // .origin this will give you the ip:port, hostname for ip
+
   constructor(
     private deviceService: DeviceService,
     private refreshService: RefreshService
   ) { }
 
   ngOnInit() {
-    this.deviceService.getDevices()
+    this.deviceService.getDevices(this.ip)
       .pipe(
         takeWhile(() => this.alive),
       )
@@ -38,7 +41,7 @@ export class DevicesCardComponent implements OnInit {
     this.timeRefreshSubscription = this.refreshService.withRefresh()
       .subscribe(
         () => {
-          this.deviceService.getDevices()
+          this.deviceService.getDevices(this.ip)
             .subscribe((data) => {
               console.log(this.speedVal);
               this.devices = data;
