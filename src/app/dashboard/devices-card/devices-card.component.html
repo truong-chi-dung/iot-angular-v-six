@@ -2,19 +2,23 @@
     <div *ngFor="let device of devices" class="col-sm-4 col-lg-3 mt-3">
         <div class="card">
             <div class="card-header unavailable"
-                *ngIf="device.currentOperationStatus=='UNAVAILABLE'||device.currentOperationStatus===null">
+                *ngIf="device.currentOperationStatus=='UNAVAILABLE' || device.currentOperationStatus===null">
                 {{device.description.manufacturer}}</div>
             <div class="card-header active" *ngIf="device.currentOperationStatus=='ACTIVE'">
                 {{device.description.manufacturer}}</div>
             <div class="card-header warning"
-                *ngIf="device.currentOperationStatus=='STOPPED'||device.currentOperationStatus=='INTERRUPTED'">
+                *ngIf="device.currentOperationStatus=='STOPPED' && device.emgStop=='ARMED' || device.currentOperationStatus=='INTERRUPTED' && device.emgStop=='ARMED'">
+                {{device.description.manufacturer}}</div>
+            <div class="card-header emg"
+                *ngIf="device.emgStop=='TRIGGERED'">
                 {{device.description.manufacturer}}</div>
             <div>
                 <div class="panel-body">Current status:
                     <div class="badge badge-{{device.status}}">{{device.currentOperationStatus}}</div>
                 </div>
                 <div class="panel-body">Line: {{device.description.model}}</div>
-                <div class="panel-body">Current parts: {{device.currentPartsCount}}</div>
+                <div class="panel-body">Current parts: {{device.currentPartsCount}}</div>                
+                <div class="panel-body">Emergency: {{device.emgStop}}</div>
             </div>
             <!-- <a routerLink="/detail/{{device.id}}" class="stretched-link"></a> -->
             <a [routerLink]="['/detail/', device.id]" class="stretched-link"></a>

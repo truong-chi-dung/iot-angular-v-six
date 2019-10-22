@@ -40,12 +40,14 @@ li{
 }
 
 .active {
-    background: #46ac32;
+    background: #00ff00;
 }
 
 .warning {
-    background: #d4c814;
+    background: #ffff00;
 
-}.stopped {
-    background: #d81515;
+}
+
+.emg {
+    background: #ff0000;
 }

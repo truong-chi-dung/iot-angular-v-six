@@ -3,6 +3,7 @@ export class Device {
     name: string;
     currentOperationStatus: string;
     currentPartsCount: string;
+    emgStop: string;
     description:  {
         manuafacturer: string;
         model: string;

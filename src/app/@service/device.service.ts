@@ -13,8 +13,8 @@ export class DeviceService {
 
   // getDevicesUrl = 'http://localhost:8080/devices/';
   // getDevicesUrl = HostAddress.API_ENDPOINT + 'devices/';
-  getDevicesUrl = '/api/devices/';
   // getDevicesUrl = ':8080/api/devices/';
+  getDevicesUrl = '/api/devices/';
 
   getDevices(ipPort: string): Observable<Device[]> {
     // return this.http.get<Device[]>(this.getDevicesUrl);
