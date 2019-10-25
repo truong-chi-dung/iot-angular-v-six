@@ -3,22 +3,33 @@
         <div class="card">
             <div class="card-header unavailable"
                 *ngIf="device.currentOperationStatus=='UNAVAILABLE' || device.currentOperationStatus===null">
-                {{device.description.manufacturer}}</div>
-            <div class="card-header active" *ngIf="device.currentOperationStatus=='ACTIVE'">
-                {{device.description.manufacturer}}</div>
+                {{device.description.manufacturer}} - DISCONNECTED</div>
+            <div class="card-header active"
+                *ngIf="device.currentOperationStatus=='ACTIVE' || device.currentOperationStatus=='READY'">
+                {{device.description.manufacturer}} - RUNNING</div>
             <div class="card-header warning"
                 *ngIf="device.currentOperationStatus=='STOPPED' && device.emgStop!='TRIGGERED' || device.currentOperationStatus=='INTERRUPTED' && device.emgStop!='TRIGGERED'">
-                {{device.description.manufacturer}}</div>
-            <div class="card-header emg"
-                *ngIf="device.emgStop=='TRIGGERED'">
-                {{device.description.manufacturer}}</div>
+                {{device.description.manufacturer}} - PAUSED</div>
+            <div class="card-header emg" *ngIf="device.emgStop=='TRIGGERED'">
+                {{device.description.manufacturer}} - EMG STOPPED</div>
             <div>
-                <div class="panel-body">Status:
+                <!-- <div class="panel-body">Status:
                     <div class="badge badge-{{device.status}}">{{device.currentOperationStatus}}</div>
-                </div>
+                </div> -->
+                <!-- <div class="panel-body"
+                    *ngIf="device.currentOperationStatus=='UNAVAILABLE' || device.currentOperationStatus===null">
+                    DISCONNECTED</div>
+                <div class="panel-body"
+                    *ngIf="device.currentOperationStatus=='ACTIVE' || device.currentOperationStatus=='READY'">
+                    RUNNING</div>
+                <div class="panel-body"
+                    *ngIf="device.currentOperationStatus=='STOPPED' && device.emgStop!='TRIGGERED' || device.currentOperationStatus=='INTERRUPTED' && device.emgStop!='TRIGGERED'">
+                    PAUSED</div>
+                <div class="panel-body" *ngIf="device.emgStop=='TRIGGERED'">
+                    EMG STOPPED</div> -->
                 <div class="panel-body">Line: {{device.description.model}}</div>
-                <div class="panel-body">Current parts: {{device.currentPartsCount}}</div>                
-                <div class="panel-body">Ip: {{device.description.serial}}</div>               
+                <div class="panel-body">Parts: {{device.currentPartsCount}}</div>
+                <!-- <div class="panel-body">Ip: {{device.description.serial}}</div> -->
                 <!-- <div class="panel-body">Emergency: {{device.emgStop}}</div> -->
             </div>
             <!-- <a routerLink="/detail/{{device.id}}" class="stretched-link"></a> -->
