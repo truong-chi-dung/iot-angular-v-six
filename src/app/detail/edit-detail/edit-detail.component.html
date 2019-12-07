@@ -1,0 +1,22 @@
+<form class="mt-3" #machineForm="ngForm" *ngIf="device" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="machineName">Machine Name</label>
+        <input type="text" class="form-control" id="machineName" [(ngModel)]="device.description.manufacturer"
+            name="machineName" #machineName="ngModel" required>
+    </div>
+    <div class="form-group">
+        <label for="lineNo">Line No</label>
+        <input type="text" class="form-control" id="lineNo" [(ngModel)]="device.description.model" name="lineNo"
+            required>
+    </div>
+    <div class="form-group">
+        <label for="partNo">Part No</label>
+        <input type="text" class="form-control" id="partNo" [(ngModel)]="device.partNo" name="partNo">
+    </div>
+    <div class="form-group">
+        <label for="prodTarget">Target (12h)</label>
+        <input type="text" class="form-control" id="prodTarget" [(ngModel)]="device.prodTarget" name="prodTarget"
+            pattern="[0-9]{1,10}">
+    </div>
+    <button type="submit" class="btn btn-success mb-3" [disabled]="machineForm.invalid">Submit</button>
+</form>

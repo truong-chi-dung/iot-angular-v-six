@@ -9,21 +9,27 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { DetailModule } from './detail/detail.module';
 import { RouterModule } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
-    RouterModule,
     BrowserModule,
+    FormsModule,
+    RouterModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
     AppRoutingModule,
     NgbModule,
     DashboardModule,
     DetailModule
+  ],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    LogoutComponent,
+    HeaderComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,16 +6,18 @@ import { RouterModule } from '@angular/router';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EditDetailComponent } from './edit-detail/edit-detail.component';
 
 @NgModule({
   declarations: [
     DetailComponent, 
-    PartCountMonitorComponent
+    PartCountMonitorComponent, 
+    EditDetailComponent
   ],
   imports: [
+    FormsModule,
     RouterModule,
     CommonModule,
-    FormsModule,
     NgbModule,
     Ng2SmartTableModule
   ]

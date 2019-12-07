@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="loginService.isUserLoggedIn()" class="container">
     <app-update-device></app-update-device>
 </div>
 <div class="container-fluid">

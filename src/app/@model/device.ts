@@ -1,4 +1,6 @@
 export class Device {
+    partNo: string;
+    prodTarget: string;
     machineId: string;
     name: string;
     currentOperationStatus: string;

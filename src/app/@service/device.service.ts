@@ -11,9 +11,7 @@ export class DeviceService {
 
   constructor(private http: HttpClient) { }
 
-  // getDevicesUrl = 'http://localhost:8080/devices/';
-  // getDevicesUrl = HostAddress.API_ENDPOINT + 'devices/';
-  // getDevicesUrl = ':8080/api/devices/';
+  // getDevicesUrl = 'http://localhost:8080/api/devices/';
   getDevicesUrl = '/api/devices/';
 
   getDevices(ipPort: string): Observable<Device[]> {
@@ -39,6 +37,12 @@ export class DeviceService {
   async deleteDevice(ipPort: string) {
     console.log(ipPort + this.getDevicesUrl + 'delete');
     return this.http.get<Device[]>(ipPort + this.getDevicesUrl + 'delete').toPromise();
+  }
+
+  updateDevice(ipPort: string, id: string, deviceInfo: Device): Observable<Device> {    
+    let url = `${ipPort}/api/devices/update/${id}`;
+    console.log(deviceInfo);
+    return this.http.put<Device>(url, deviceInfo);
   }
 
   createDevices(ipPort: string): Observable<Device[]> {

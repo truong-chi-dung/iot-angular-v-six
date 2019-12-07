@@ -1,3 +1,13 @@
 <div class="container">
     <app-part-count-monitor></app-part-count-monitor>
+    <div class="row mt-3" *ngIf="loginService.isUserLoggedIn()">
+        <div class="col">
+            <h5>Edit</h5>
+            <p>
+                <a [routerLink]="['./']">Hide</a> |
+                <a [routerLink]="['./edit']">Show</a>
+            </p>
+        </div>
+    </div>
+    <router-outlet></router-outlet>
 </div>

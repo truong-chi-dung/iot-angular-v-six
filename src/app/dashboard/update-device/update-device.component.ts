@@ -7,10 +7,11 @@ import { DeviceService } from 'src/app/@service/device.service';
   styleUrls: ['./update-device.component.css']
 })
 export class UpdateDeviceComponent implements OnInit {
-
-  // private ip = window.location.hostname;
-  private ip = window.location.origin; // .origin this will give you the ip:port, .hostname for ip
   
+  // .origin this will give you the ip:port, .hostname for ip
+  // private ip = window.location.hostname;
+  private ip = window.location.origin;
+
   constructor(
     private deviceService: DeviceService
   ) { }
@@ -33,7 +34,7 @@ export class UpdateDeviceComponent implements OnInit {
     );
   }
 
-  exportCsv() {    
+  exportCsv() {
     this.deviceService.exportCsv(this.ip);
   }
 }

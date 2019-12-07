@@ -15,8 +15,10 @@ export class PartCountMonitorComponent implements OnInit {
   public date = { year: this.currentDate.getFullYear(), month: this.currentDate.getMonth() + 1, day: this.currentDate.getDate() };
   public data: PartCount[];
   
+  // .origin this will give you the ip:port, hostname for ip
   // private ip = window.location.hostname;
-  private ip = window.location.origin; // .origin this will give you the ip:port, hostname for ip
+  private ip = window.location.origin; 
+  // private ip = 'http://localhost:8080';
   
   settings = {
     actions: false,

@@ -3,36 +3,31 @@
         <div class="card">
             <div class="card-header unavailable"
                 *ngIf="device.currentOperationStatus=='UNAVAILABLE' || device.currentOperationStatus===null">
-                {{device.description.manufacturer}} - DISCONNECTED</div>
+                {{device.description.manufacturer}} (L{{device.description.model}}) - DISCONNECTED</div>
             <div class="card-header active"
                 *ngIf="device.currentOperationStatus=='ACTIVE' || device.currentOperationStatus=='READY'">
-                {{device.description.manufacturer}} - RUNNING</div>
+                {{device.description.manufacturer}} (L{{device.description.model}}) - RUNNING</div>
             <div class="card-header warning"
                 *ngIf="device.currentOperationStatus=='STOPPED' && device.emgStop!='TRIGGERED' || device.currentOperationStatus=='INTERRUPTED' && device.emgStop!='TRIGGERED'">
-                {{device.description.manufacturer}} - PAUSED</div>
+                {{device.description.manufacturer}} (L{{device.description.model}}) - PAUSED</div>
             <div class="card-header emg" *ngIf="device.emgStop=='TRIGGERED'">
-                {{device.description.manufacturer}} - EMG STOPPED</div>
+                {{device.description.manufacturer}} (L{{device.description.model}}) - EMG STOPPED</div>
             <div>
-                <!-- <div class="panel-body">Status:
-                    <div class="badge badge-{{device.status}}">{{device.currentOperationStatus}}</div>
-                </div> -->
-                <!-- <div class="panel-body"
-                    *ngIf="device.currentOperationStatus=='UNAVAILABLE' || device.currentOperationStatus===null">
-                    DISCONNECTED</div>
-                <div class="panel-body"
-                    *ngIf="device.currentOperationStatus=='ACTIVE' || device.currentOperationStatus=='READY'">
-                    RUNNING</div>
-                <div class="panel-body"
-                    *ngIf="device.currentOperationStatus=='STOPPED' && device.emgStop!='TRIGGERED' || device.currentOperationStatus=='INTERRUPTED' && device.emgStop!='TRIGGERED'">
-                    PAUSED</div>
-                <div class="panel-body" *ngIf="device.emgStop=='TRIGGERED'">
-                    EMG STOPPED</div> -->
-                <div class="panel-body">Line: {{device.description.model}}</div>
-                <div class="panel-body">Parts: {{device.currentPartsCount}}</div>
-                <!-- <div class="panel-body">Ip: {{device.description.serial}}</div> -->
-                <!-- <div class="panel-body">Emergency: {{device.emgStop}}</div> -->
+                <div class="panel-body">Parts No: {{device.partNo}}</div>
+                <div class="panel-body">Part: {{device.currentPartsCount}} | Total target: {{device.prodTarget}}</div>
+                <div class="panel-body font-weight-bold successText"
+                    *ngIf="(device.currentPartsCount/((device.prodTarget/12)*timeIndex))>=1">
+                    Productivity/hour (%):
+                    {{(device.currentPartsCount/((device.prodTarget/12)*timeIndex))*100|number:'3.0-0'}}</div>
+                <div class="panel-body font-weight-bold emgText"
+                    *ngIf="(device.currentPartsCount/((device.prodTarget/12)*timeIndex))<0.8">
+                    Productivity/hour (%):
+                    {{(device.currentPartsCount/((device.prodTarget/12)*timeIndex))*100|number:'3.0-0'}}</div>
+                <div class="panel-body font-weight-bold"
+                    *ngIf="0.8<(device.currentPartsCount/((device.prodTarget/12)*timeIndex)) && (device.currentPartsCount/((device.prodTarget/12)*timeIndex))<1">
+                    Productivity/hour (%):
+                    {{(device.currentPartsCount/((device.prodTarget/12)*timeIndex))*100|number:'3.0-0'}}</div>
             </div>
-            <!-- <a routerLink="/detail/{{device.id}}" class="stretched-link"></a> -->
             <a [routerLink]="['/detail/', device.id]" class="stretched-link"></a>
         </div>
     </div>
